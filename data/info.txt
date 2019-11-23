@@ -1,0 +1,63 @@
+NOTE: I have copied this from an older version of the dataset as the author removed most of the detail from the newer one for some reason.
+
+This dataset within the 1000 matches provides every successful entry of duels (or battle) that took place for a player. That is, each row documents an event when a player is hurt by another player (or World e.g fall damage). There are over 750,000 entries within approximately 25600 rounds.
+
+I will describe each field below within mm_master_demos.csv:
+
+file: The file name that the demo was scraped from. This is a unique field for each match.
+
+map: The Valve official map the match was played on.
+
+date: Date the match was played (unverified if they are correct).
+
+round: The round that the duel took place.
+
+tick: The current tick in the demo the entry took place. A tick is represented as a state in the game, Valve's competitive matchmaking sets every match at 64 ticks which represents that there are 64 states within each second of the game.
+
+seconds: The converted tick to seconds within the game since match start.
+
+att_team: The team that the attacking player is on that dealt damage to the victim. Usually Team 1 and 2 but in some recorded pro matches, can have custom team name e.g Games Academy.
+
+vic_team: The team that the victim player is on that received damage from the attacker.
+
+att_side: The side that the attacker was on. Can be Terrorist or CounterTerrorist.
+
+vic_side: The side that the victim was on. Can be Terrorist or CounterTerrorist.
+
+hp_dmg: The total damage dealt in that duel to the victim. Each player starts the round with 100 max hp.
+
+arm_dmg: The total damage dealt to kevlar. Three things to note: 1. Kevlar is an optional item that players choose to buy 2. Kevlar only protects the chest area and 3. Damage to kevlar is already accounted for in hp_dmg, that is if hp_dmg = 50 and arm_dmg = 50, the player has only lost 50 hp and is still alive.
+
+is_bomb_planted: Has the bomb been planted as of this entry.
+
+bomb_site: The site the bomb is planted at (only A or B) and empty if is_bomb_planted is false.
+
+hitbox: The body area the victim was struck in.
+
+wp: The weapon that the attacker used to deal damage.
+
+wp_type: The type of weapon that the attacker used
+
+award: The kill reward (in $) that the player get should they kill that person. The kill reward changes purely based on the weapon they are using.
+
+winner_team: The team that won at the end of that round.
+
+winner_side: The side that the team that winner_team was on.
+
+att_id: The steam id of the attacker. This is a unique identifier for each player.
+
+vic_id: The steam id of the victim. This is a unique identifier for each player.
+
+att_pos_x: The X position of the attacker when they started the engagement. Note that this is an in-game coordinate and need to be converted to positive X,Y coordinates when plotting on a map.
+
+att_pos_y: The Y position of the attacker when they started the engagement. Note that this is an in-game coordinate and need to be converted to positive X,Y coordinates when plotting on a map.
+
+vic_pos_x: The X position of the victim when they received damage. Note that this is an in-game coordinate and need to be converted to positive X,Y coordinates when plotting on a map.
+
+vic_pos_y: The Y position of the attacker when they started the engagement. Note that this is an in-game coordinate and need to be converted to positive X,Y coordinates when plotting on a map.
+
+round_type: The estimated round type by Akiver's csgo demo manager. This is based on ct_eq_val and t_eq_val and is imperfect so there can be mistakes.
+
+ct_eq_val: The Counter Terrorist team's total equipment value (weapon + grenades + armor + utilities) after buy time.
+
+t_eq_val: The Terrorist team's total equipment value (weapon + grenades + armor + utilities) after buy time.
